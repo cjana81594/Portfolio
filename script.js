@@ -1,4 +1,23 @@
+// Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function () {
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  // Toggle details for qualifications
   const buttons = document.querySelectorAll('.toggle-btn');
 
   buttons.forEach(btn => {
